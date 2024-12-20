@@ -28,12 +28,10 @@ class UserFirebaseDAO {
     for (var giftDoc in gifts.docs) {
       Gift gift = Gift.fromMap(giftDoc.data());
 
-      final eventCollection = giftDoc.reference.parent;
-      final eventDoc = await eventCollection.doc(gift.eventId).get();
+      final eventDoc = await giftDoc.reference.parent.parent!.get();
       Event event = Event.fromMap(eventDoc.data()!);
 
-      final userCollection = eventDoc.reference.parent;
-      final userDoc = await userCollection.doc(gift.eventId).get();
+      final userDoc = await eventDoc.reference.parent.parent!.get();
       HedieatyUser user = HedieatyUser.fromMap(userDoc.data()!);
 
       pledgedGifts.add(PledgedGiftModel(

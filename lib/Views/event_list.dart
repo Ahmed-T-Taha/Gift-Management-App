@@ -78,18 +78,20 @@ class _EventListPageState extends State<EventListPage> {
                         Text('Description: ${event.description}'),
                       ],
                     ),
-                    trailing: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        IconButton(
-                          icon: Icon(Icons.edit),
-                          onPressed: () => _editEvent(event),
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.delete),
-                          onPressed: () => _deleteEvent(event.id),
-                        ),
-                      ],
+                    trailing: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.edit),
+                            onPressed: () => _editEvent(event),
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.delete),
+                            onPressed: () => _deleteEvent(event.id),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

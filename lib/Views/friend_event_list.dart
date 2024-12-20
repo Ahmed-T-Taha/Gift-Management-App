@@ -16,7 +16,7 @@ class _FriendEventListPageState extends State<FriendEventListPage> {
   void _goToEvent(Event event) {
     Navigator.pushNamed(
       context,
-      '/friend-events',
+      '/friend-gifts',
       arguments:
           FriendGiftListController(friend: _controller.friend, event: event),
     );
