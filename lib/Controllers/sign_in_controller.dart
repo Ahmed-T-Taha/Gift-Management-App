@@ -25,11 +25,9 @@ class SignInController {
       return 'FormValidationError';
     }
     try {
-      UserCredential userCredential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      );
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: emailController.text, password: passwordController.text);
 
       if (userCredential.user == null) {
         return 'Something went wrong. Please try again.';
