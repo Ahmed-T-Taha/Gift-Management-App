@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "834956031468",
+    "project_id": "hedieaty-cbf29",
+    "storage_bucket": "hedieaty-cbf29.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834956031468:android:011ea223701b398ed53cc9",
+        "android_client_info": {
+          "package_name": "com.example.gift_management_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3AxoQ4NXErOM-93lYMHCY2RBvmu-RUj4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
