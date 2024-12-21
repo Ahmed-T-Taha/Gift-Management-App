@@ -13,6 +13,10 @@ class HomeController {
     return await FriendFirebaseDAO.getUserFriends(_userId);
   }
 
+  Future signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
   Future<String?> addUserByPhone(String phone) async {
     HedieatyUser? friend = await UserFirebaseDAO.getUserByPhone(phone);
     if (friend == null) {

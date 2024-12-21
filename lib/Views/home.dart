@@ -13,6 +13,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final HomeController _controller = HomeController();
 
+  void _signOut() async {
+    _controller.signOut().then((_) => Navigator.pushReplacementNamed(
+          context,
+          '/login',
+        ));
+  }
+
   void _goToFriendEvents(HedieatyUser friend) async {
     Navigator.pushNamed(
       context,
@@ -69,6 +76,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('Hedieaty'),
+        actions: [ElevatedButton(onPressed: _signOut, child: Text('Sign out'))],
       ),
       body: Column(
         children: [

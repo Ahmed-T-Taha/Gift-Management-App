@@ -84,29 +84,42 @@ class _FriendGiftListPageState extends State<FriendGiftListPage> {
                       child: Card(
                         color: getStatusColor(gift.status),
                         child: ListTile(
-                          leading: Image.network(
-                            gift.imageUrl,
-                            width: 50,
-                            height: 50,
-                            fit: BoxFit.cover,
-                          ),
-                          title: Text(gift.name),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          title: Row(
                             children: [
-                              Text('Description: ${gift.description}'),
-                              Text('Category: ${gift.category}'),
-                              Text(
-                                  'Price: EGP${gift.price.toStringAsFixed(2)}'),
-                              Text('Status: ${gift.status}'),
+                              Image.network(
+                                gift.imageUrl,
+                                width: 50,
+                                height: 50,
+                                fit: BoxFit.cover,
+                              ),
+                              SizedBox(width: 8),
+                              Text(gift.name),
                             ],
                           ),
-                          trailing: gift.status == "available"
-                              ? ElevatedButton(
-                                  onPressed: () => _pledgeGift(gift),
-                                  child: Text('Pledge'),
-                                )
-                              : null,
+                          subtitle: Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Description: ${gift.description}'),
+                                    Text('Category: ${gift.category}'),
+                                    Text(
+                                        'Price: EGP${gift.price.toStringAsFixed(2)}'),
+                                    Text('Status: ${gift.status}'),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                child: gift.status == "available"
+                                    ? ElevatedButton(
+                                        onPressed: () => _pledgeGift(gift),
+                                        child: Text('Pledge'),
+                                      )
+                                    : null,
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     );

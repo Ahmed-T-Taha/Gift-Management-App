@@ -94,39 +94,50 @@ class _GiftListPageState extends State<GiftListPage> {
                       child: Card(
                         color: getStatusColor(gift.status),
                         child: ListTile(
-                          leading: Image.network(
-                            gift.imageUrl,
-                            width: 50,
-                            height: 50,
-                            fit: BoxFit.cover,
-                          ),
-                          title: Text(gift.name),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          title: Row(
                             children: [
-                              Text('Description: ${gift.description}'),
-                              Text('Category: ${gift.category}'),
-                              Text(
-                                  'Price: EGP${gift.price.toStringAsFixed(2)}'),
-                              Text('Status: ${gift.status}'),
+                              Image.network(
+                                gift.imageUrl,
+                                width: 50,
+                                height: 50,
+                                fit: BoxFit.cover,
+                              ),
+                              SizedBox(width: 8),
+                              Text(gift.name),
                             ],
                           ),
-                          trailing: gift.status == 'available'
-                              ? SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      IconButton(
-                                        icon: Icon(Icons.edit),
-                                        onPressed: () => _editGift(gift),
-                                      ),
-                                      IconButton(
-                                        icon: Icon(Icons.delete),
-                                        onPressed: () => _deleteGift(gift),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              : null,
+                          subtitle: Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Description: ${gift.description}'),
+                                    Text('Category: ${gift.category}'),
+                                    Text(
+                                        'Price: EGP${gift.price.toStringAsFixed(2)}'),
+                                    Text('Status: ${gift.status}'),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                child: gift.status == 'available'
+                                    ? Column(
+                                        children: [
+                                          IconButton(
+                                            icon: Icon(Icons.edit),
+                                            onPressed: () => _editGift(gift),
+                                          ),
+                                          IconButton(
+                                            icon: Icon(Icons.delete),
+                                            onPressed: () => _deleteGift(gift),
+                                          ),
+                                        ],
+                                      )
+                                    : null,
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     );

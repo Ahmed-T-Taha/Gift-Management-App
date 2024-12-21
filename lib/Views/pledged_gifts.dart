@@ -50,46 +50,53 @@ class _MyPledgedGiftsPageState extends State<MyPledgedGiftsPage> {
                 child: Card(
                   color: getStatusColor(giftModel.gift.status),
                   child: ListTile(
-                    leading: Image.network(
-                      giftModel.gift.imageUrl,
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.cover,
-                    ),
-                    title: Text(giftModel.gift.name),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    title: Row(
                       children: [
-                        Text('Friend Name: ${giftModel.friend.name}'),
-                        Text('Event Name: ${giftModel.event.name}'),
-                        Text(
-                            'Event Date: ${DateFormat.yMd().format(giftModel.event.date)}'),
-                        Text('Description: ${giftModel.gift.description}'),
-                        Text('Category: ${giftModel.gift.category}'),
-                        Text(
-                            'Price: EGP${giftModel.gift.price.toStringAsFixed(2)}'),
-                        Text('Status: ${giftModel.gift.status}'),
+                        Image.network(
+                          giftModel.gift.imageUrl,
+                          width: 50,
+                          height: 50,
+                          fit: BoxFit.cover,
+                        ),
+                        SizedBox(width: 8),
+                        Text(giftModel.gift.name),
                       ],
                     ),
-                    trailing: giftModel.gift.status == 'pledged'
-                        ? SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                ElevatedButton(
-                                  child: Text('Unpledge Gift'),
-                                  onPressed: () =>
-                                      _controller.unpledgeGift(giftModel),
-                                ),
-                                ElevatedButton(
-                                  child: Text('Purchase Gift'),
-                                  onPressed: () =>
-                                      _controller.purchaseGift(giftModel),
-                                ),
-                              ],
-                            ),
-                          )
-                        : null,
+                    subtitle: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Friend Name: ${giftModel.friend.name}'),
+                              Text('Event Name: ${giftModel.event.name}'),
+                              Text(
+                                  'Event Date: ${DateFormat.yMd().format(giftModel.event.date)}'),
+                              Text('Status: ${giftModel.gift.status}'),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          child: giftModel.gift.status == 'pledged'
+                              ? Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    ElevatedButton(
+                                      child: Text('Unpledge Gift'),
+                                      onPressed: () =>
+                                          _controller.unpledgeGift(giftModel),
+                                    ),
+                                    ElevatedButton(
+                                      child: Text('Purchase Gift'),
+                                      onPressed: () =>
+                                          _controller.purchaseGift(giftModel),
+                                    ),
+                                  ],
+                                )
+                              : null,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               );
