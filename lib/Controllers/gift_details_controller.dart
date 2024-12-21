@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gift_management_app/Models/gift.dart';
 import 'package:gift_management_app/Models/firebase_db.dart';
-import 'package:gift_management_app/Models/local_db.dart';
-import 'package:uuid/uuid.dart';
+import 'package:gift_management_app/Models/gift.dart';
 import 'package:http/http.dart' as http;
+import 'package:uuid/uuid.dart';
 
 abstract class GiftDetailsController {
   late final String pageTitle;

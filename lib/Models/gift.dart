@@ -1,5 +1,4 @@
 import 'package:gift_management_app/Models/event.dart';
-import 'package:gift_management_app/Models/friend.dart';
 import 'package:gift_management_app/Models/hedieaty_user.dart';
 
 class Gift {

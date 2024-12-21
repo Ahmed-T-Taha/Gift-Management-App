@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gift_management_app/Models/event.dart';
 import 'package:gift_management_app/Models/firebase_db.dart';
-import 'package:gift_management_app/Models/local_db.dart';
 import 'package:uuid/uuid.dart';
 
 abstract class EventDetailsController {
+  final userId = FirebaseAuth.instance.currentUser!.uid;
   late final String pageTitle;
   final formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
@@ -56,9 +56,8 @@ class AddEventController extends EventDetailsController {
       date: pickedDate!,
       location: locationController.text,
       description: descriptionController.text,
-      userId: FirebaseAuth.instance.currentUser!.uid,
+      userId: userId,
     );
-    EventLocalDAO.insertEvent(event);
     return EventFirebaseDAO.insertEvent(event);
   }
 }
@@ -86,7 +85,6 @@ class UpdateEventController extends EventDetailsController {
     event.date = pickedDate!;
     event.location = locationController.text;
     event.description = descriptionController.text;
-    EventLocalDAO.insertEvent(event);
-    return EventFirebaseDAO.insertEvent(event);
+    return EventFirebaseDAO.updateEvent(userId, event);
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gift_management_app/Controllers/event_list_controller.dart';
 import 'package:gift_management_app/Controllers/event_details_controller.dart';
+import 'package:gift_management_app/Controllers/event_list_controller.dart';
 import 'package:gift_management_app/Controllers/gift_list_controller.dart';
 import 'package:gift_management_app/Models/event.dart';
 import 'package:intl/intl.dart';
@@ -70,28 +70,33 @@ class _EventListPageState extends State<EventListPage> {
                   child: ListTile(
                     onTap: () => _goToEvent(event),
                     title: Text(event.name),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    subtitle: Row(
                       children: [
-                        Text('Date: ${DateFormat.yMd().format(event.date)}'),
-                        Text('Location: ${event.location}'),
-                        Text('Description: ${event.description}'),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                  'Date: ${DateFormat.yMd().format(event.date)}'),
+                              Text('Location: ${event.location}'),
+                              Text('Description: ${event.description}'),
+                            ],
+                          ),
+                        ),
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.edit),
+                              onPressed: () => _editEvent(event),
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.delete),
+                              onPressed: () => _deleteEvent(event.id),
+                            ),
+                          ],
+                        ),
                       ],
-                    ),
-                    trailing: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () => _editEvent(event),
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.delete),
-                            onPressed: () => _deleteEvent(event.id),
-                          ),
-                        ],
-                      ),
                     ),
                   ),
                 ),

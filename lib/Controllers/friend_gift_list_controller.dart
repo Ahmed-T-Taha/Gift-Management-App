@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:gift_management_app/Models/firebase_db.dart';
-import 'package:gift_management_app/Models/hedieaty_user.dart';
 import 'package:gift_management_app/Models/event.dart';
+import 'package:gift_management_app/Models/firebase_db.dart';
 import 'package:gift_management_app/Models/gift.dart';
+import 'package:gift_management_app/Models/hedieaty_user.dart';
 
 class FriendGiftListController {
   HedieatyUser friend;

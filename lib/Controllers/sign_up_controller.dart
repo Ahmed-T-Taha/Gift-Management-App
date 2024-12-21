@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:gift_management_app/Models/firebase_db.dart';
 import 'package:gift_management_app/Models/hedieaty_user.dart';
-import 'package:gift_management_app/Models/local_db.dart';
 
 class SignUpController {
   final formKey = GlobalKey<FormState>();
@@ -70,7 +69,6 @@ class SignUpController {
         email: emailController.text,
       );
       UserFirebaseDAO.insertUser(user);
-      UserLocalDAO.insertUser(user);
       return null;
     } on FirebaseAuthException catch (e) {
       return e.message;

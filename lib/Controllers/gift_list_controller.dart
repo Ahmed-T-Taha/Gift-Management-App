@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:gift_management_app/Models/firebase_db.dart';
 import 'package:gift_management_app/Models/event.dart';
+import 'package:gift_management_app/Models/firebase_db.dart';
 import 'package:gift_management_app/Models/gift.dart';
-import 'package:gift_management_app/Models/local_db.dart';
 
 class GiftListController {
   late final String _userId;
@@ -17,7 +16,6 @@ class GiftListController {
   }
 
   Future deleteGift(Gift gift) async {
-    await GiftLocalDAO.deleteGift(gift.id);
     await GiftFirebaseDAO.deleteGift(_userId, gift);
   }
 }
