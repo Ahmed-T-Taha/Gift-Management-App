@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:834956031468:android:21f3d1beb8b53044d53cc9",
+        "android_client_info": {
+          "package_name": "com.ahmedtahadev.hedieaty"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3AxoQ4NXErOM-93lYMHCY2RBvmu-RUj4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:834956031468:android:011ea223701b398ed53cc9",
         "android_client_info": {
           "package_name": "com.example.gift_management_app"

@@ -1,4 +1,4 @@
-package com.example.gift_management_app;
+package com.ahmedtahadev.hedieaty;
 
 import io.flutter.embedding.android.FlutterActivity;
 
