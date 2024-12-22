@@ -27,7 +27,7 @@ class _SignInPageState extends State<SignInPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Sign In'),
+        title: Center(child: Text('Sign In')),
       ),
       body: SingleChildScrollView(
         child: Center(

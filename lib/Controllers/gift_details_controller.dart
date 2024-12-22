@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gift_management_app/Models/firebase_db.dart';
 import 'package:gift_management_app/Models/gift.dart';
+import 'package:gift_management_app/Models/local_db.dart';
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
 
@@ -94,6 +95,7 @@ class AddGiftController extends GiftDetailsController {
       eventId: eventId,
     );
     final userId = FirebaseAuth.instance.currentUser!.uid;
+    GiftLocalDAO.insertGift(gift);
     return await GiftFirebaseDAO.insertGift(userId, gift);
   }
 }
@@ -121,6 +123,7 @@ class UpdateGiftController extends GiftDetailsController {
     gift.price = double.parse(priceController.text);
     gift.imageUrl = imageUrlController.text;
     final userId = FirebaseAuth.instance.currentUser!.uid;
+    GiftLocalDAO.updateGift(gift);
     return await GiftFirebaseDAO.updateGift(userId, gift);
   }
 }

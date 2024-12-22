@@ -110,6 +110,9 @@ class FriendFirebaseDAO {
       return e.message;
     });
     List<String> friendIds = List.from(userDoc.data()!['friends']);
+    if (friendIds.isEmpty) {
+      return <HomePageFriendModel>[];
+    }
     var users = await FirebaseFirestore.instance
         .collection('users')
         .where('id', whereIn: friendIds)

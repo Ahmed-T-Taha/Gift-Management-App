@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gift_management_app/Models/event.dart';
 import 'package:gift_management_app/Models/firebase_db.dart';
+import 'package:gift_management_app/Models/local_db.dart';
 
 class EventListController {
   late final String _userId;
@@ -12,6 +13,7 @@ class EventListController {
   }
 
   Future deleteEvent(String eventId) async {
+    EventLocalDAO.deleteEvent(eventId);
     await EventFirebaseDAO.deleteEvent(_userId, eventId);
   }
 }
